@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Ventas y Pedidos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a la Plataforma</h1>
+        <button id="logoutBtn" style="display: none;">Cerrar Sesión</button>
+    </header>
+
+    <main>
+        <section id="roleSelection">
+            <h2>¿Qué tipo de usuario eres?</h2>
+            <button id="btnVendorRole">Soy Vendedor</button>
+            <button id="btnClientRole">Soy Cliente</button>
+        </section>
+
+        <section id="authSection" style="display: none;">
+            <h2><span id="authRoleDisplay"></span> - <span id="authActionDisplay"></span></h2>
+            <form id="authForm">
+                <input type="email" id="emailInput" placeholder="Correo Electrónico (Gmail)" required>
+                <div class="error-message" id="emailError"></div>
+
+                <input type="password" id="passwordInput" placeholder="Contraseña" required>
+                <div class="error-message" id="passwordError"></div>
+
+                <input type="text" id="nameInput" placeholder="Tu Nombre" style="display: none;">
+                <div class="error-message" id="nameError"></div>
+
+                <input type="tel" id="phoneInput" placeholder="Tu Teléfono (9 dígitos)" style="display: none;">
+                <div class="error-message" id="phoneError"></div>
+
+                <button type="submit" id="mainAuthBtn">Iniciar Sesión</button>
+            </form>
+            <button id="toggleAuthBtn">¿No tienes cuenta? Regístrate</button>
+        </section>
+
+        <section id="vendorPanel" style="display: none;">
+            <h2>Panel del Vendedor</h2>
+            <p>Bienvenido, <span id="vendorEmailDisplay"></span>!</p>
+
+            <h3>Subir Nuevo Producto</h3>
+            <form id="productForm">
+                <input type="text" id="productNameInput" placeholder="Nombre del Producto" required>
+                <div class="error-message" id="productNameError"></div>
+
+                <input type="number" id="productPriceInput" placeholder="Precio (S/)" step="0.01" min="0.01" required>
+                <div class="error-message" id="productPriceError"></div>
+
+                <button type="submit">Agregar Producto</button>
+            </form>
+
+            <h3>Mis Productos (con Comisión del 5%)</h3>
+            <div id="vendorProductsList">
+                <p id="noVendorProductsMessage" style="display: none;">No has subido ningún producto aún.</p>
+            </div>
+            <p>Comisión total mensual: <span id="totalCommissionDisplay">S/ 0.00</span></p>
+        </section>
+
+        <section id="clientPanel" style="display: none;">
+            <h2>Panel del Cliente</h2>
+            <p>Bienvenido, <span id="clientNameDisplay"></span>!</p>
+
+            <h3>Productos Disponibles</h3>
+            <div id="availableProductsList">
+                <p id="noAvailableProductsMessage" style="display: none;">No hay productos disponibles en este momento.</p>
+            </div>
+
+            <div id="orderFormContainer" style="display: none;">
+                <h3>Realizar Pedido</h3>
+                <p>Producto: <span id="orderProductName"></span> - Precio: <span id="orderProductPrice"></span></p>
+                <input type="text" id="deliveryAddressInput" placeholder="Dirección de Entrega" required>
+                <div class="error-message" id="deliveryAddressError"></div>
+                <button id="confirmOrderBtn">Confirmar Pedido</button>
+                <button id="cancelOrderBtn">Cancelar</button>
+            </div>
+
+            <h3>Mis Pedidos</h3>
+            <div id="clientOrdersList">
+                <p id="noClientOrdersMessage" style="display: none;">No has realizado ningún pedido aún.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
